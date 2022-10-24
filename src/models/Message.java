@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 public class Message {
     private String author;
     private String text;
-    private LocalDateTime created;
+    private LocalDateTime time;
+    private String created;
     public static final int USER_LOGGED_IN = 1;
     public static final int USER_LOGGED_OUT = 2;
 
@@ -14,16 +15,18 @@ public class Message {
     public Message(String author, String text) {
         this.author = author;
         this.text = text;
-        created = LocalDateTime.now();
+        this.time = LocalDateTime.now();
+        this.created = time.getHour() + ":" + time.getMinute();
     }
     public Message(int type, String username){
         this.author = AUTHOR_SYSTEM;
-        this.created = LocalDateTime.now();
+        this.time = LocalDateTime.now();
+        this.created = time.getHour() + ":" + time.getMinute();
         if(type == USER_LOGGED_IN){
-            text = username + "has joined the chat";
+            text = username + " has joined the chat\n";
         }
         else if(type == USER_LOGGED_OUT){
-            text = username + "has leaved the chat";
+            text = username + " has leaved the chat\n";
         }
     }
 
@@ -35,7 +38,7 @@ public class Message {
         return text;
     }
 
-    public LocalDateTime getCreated() {
+    public String getCreated() {
         return created;
     }
 
@@ -44,7 +47,7 @@ public class Message {
         if(author.equals(AUTHOR_SYSTEM))
             return text;
 
-        String s = author + "["+created.toLocalTime()+"]\n";
+        String s = author + " ["+created+"]\n";
         s += text + "\n";
         return s;
     }

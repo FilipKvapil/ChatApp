@@ -2,6 +2,7 @@ package models.gui;
 
 import models.Message;
 import models.chatClients.ChatClient;
+import models.chatClients.InMemoryChatClient;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class MainFrame extends JFrame {
         super("PRO2 ChatClient");
         setSize(width, height);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.chatClient = chatClient;
+        this.chatClient = new InMemoryChatClient();
 
         initGui();
         setVisible(true);
