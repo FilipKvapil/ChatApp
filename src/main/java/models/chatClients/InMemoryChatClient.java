@@ -6,14 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+//třída pro práci clientem bez volání ukládání do souboru
 
 public class InMemoryChatClient implements ChatClient{
     private String loggedUser;
-    private List<String> loggedUsers;
-    private List<Message> messages;
+    private final List<String> loggedUsers;
+    private final List<Message> messages;
 
-    private List<ActionListener> listenerLoggedUsersChanged = new ArrayList<>();
-    private List<ActionListener> listenerMessagesChanged = new ArrayList<>();
+    private final List<ActionListener> listenerLoggedUsersChanged = new ArrayList<>();
+    private final List<ActionListener> listenerMessagesChanged = new ArrayList<>();
 
     public InMemoryChatClient(){
         loggedUsers = new ArrayList<>();

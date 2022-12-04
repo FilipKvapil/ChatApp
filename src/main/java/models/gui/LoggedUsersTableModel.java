@@ -5,7 +5,7 @@ import models.chatClients.ChatClient;
 import javax.swing.table.AbstractTableModel;
 
 public class LoggedUsersTableModel extends AbstractTableModel {
-    private ChatClient chatClient;
+    private final ChatClient chatClient;
 
     public LoggedUsersTableModel(ChatClient chatClient){
         this.chatClient = chatClient;
